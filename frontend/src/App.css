@@ -1,27 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  min-height: 100vh;
+  background: linear-gradient(135deg, #2a224f, #445c82, #666bba);
 }
 
+/* Main wrapper */
 .container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 40px;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontal center */
+  justify-content: flex-start;
+  padding-top: 60px;
   text-align: center;
-  color: white;
 }
 
+/* Title */
 .title {
   font-size: 42px;
   margin-bottom: 30px;
 }
 
+/* Form */
 .form {
   display: flex;
   gap: 15px;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   margin-bottom: 40px;
 }
@@ -30,7 +47,7 @@ body {
   padding: 12px;
   border-radius: 10px;
   border: none;
-  width: 200px;
+  width: 220px;
 }
 
 .form button {
@@ -40,34 +57,36 @@ body {
   background: #ff758c;
   color: white;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.form button:hover {
-  transform: scale(1.05);
-}
-
+/* Grid */
 .task-grid {
+  width: 100%;
+  max-width: 950px;      /* Important */
+  margin: 0 auto;        /* Important */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
 }
 
+/* Card */
 .card {
-  background: rgba(255, 255, 255, 0.15);
+  width: 280px;
+  background: whitesmoke;
   padding: 20px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  transition: 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .card.done {
-  background: rgba(0, 255, 150, 0.25);
+  background: rgb(149, 218, 117);
 }
 
 .status {
@@ -98,4 +117,29 @@ body {
   border-radius: 8px;
   color: white;
   cursor: pointer;
+}
+
+.toggle:hover {
+  background: #3e8e41;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.delete:hover {
+  background: #d32f2f;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .task-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .task-grid {
+    grid-template-columns: 1fr;
+  }
 }
